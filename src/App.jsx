@@ -72,7 +72,6 @@ function MainApp() {
         }} 
         onOpenNewQuote={handleOpenNewQuote}
         isCollapsed={isSidebarCollapsed}
-        onToggleCollapse={toggleSidebar}
       />
 
       {/* Main Content Viewport */}

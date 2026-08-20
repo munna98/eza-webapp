@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Search, Bell, Calendar, Menu } from 'lucide-react';
+import { Search, Bell, Calendar, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 
 export default function Header({ 
   searchTerm, 
@@ -32,14 +32,18 @@ export default function Header({
 
   return (
     <header className="bg-white border-b border-slate-200 px-6 md:px-8 py-4 flex items-center justify-between sticky top-0 z-20 shadow-xs no-print">
-      {/* Left Area: Toggle & Search Bar */}
+      {/* Left Area: Dynamic Panel Toggle & Search Bar */}
       <div className="flex items-center gap-3.5">
         <button
           onClick={onToggleSidebar}
           title={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-          className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-xl border border-slate-200 transition-colors shrink-0"
+          className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl border border-slate-200 transition-colors shrink-0 flex items-center justify-center"
         >
-          <Menu className="w-5 h-5" />
+          {isSidebarCollapsed ? (
+            <PanelLeftOpen className="w-5 h-5 text-slate-700" />
+          ) : (
+            <PanelLeftClose className="w-5 h-5 text-slate-700" />
+          )}
         </button>
 
         <div className="relative w-64 md:w-80 lg:w-96">
