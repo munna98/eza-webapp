@@ -33,10 +33,10 @@ export default function QuotationBuilder({ onOpenNewQuote, onEditQuote, onSelect
         <div className="space-y-1.5">
           <h2 className="text-2xl font-extrabold text-slate-900 flex items-center gap-3">
             <FileText className="w-7 h-7 text-emerald-600" />
-            Quotations Lifecycle & Workflow
+            Quotations
           </h2>
           <p className="text-xs md:text-sm text-slate-500 font-medium">
-            Progress quotations from Draft ➔ Sent ➔ Approved ➔ Tax Invoice with printable PDF export
+            Create, track, and manage quotations
           </p>
         </div>
 
@@ -45,7 +45,7 @@ export default function QuotationBuilder({ onOpenNewQuote, onEditQuote, onSelect
           className="btn-primary py-3 px-5 text-sm shrink-0 font-bold"
         >
           <Plus className="w-4 h-4" />
-          <span>New Custom Quotation</span>
+          <span>New Quotation</span>
         </button>
       </div>
 
@@ -185,7 +185,7 @@ export default function QuotationBuilder({ onOpenNewQuote, onEditQuote, onSelect
                       }
                     }}
                     className="btn-primary py-2 px-3.5 text-xs font-bold shadow-md shadow-emerald-600/20"
-                    title="Generate GST Tax Invoice"
+                    title="Generate Tax Invoice"
                   >
                     <Sparkles className="w-3.5 h-3.5" />
                     <span>Convert to Invoice</span>

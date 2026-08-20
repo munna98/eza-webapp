@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Search, Bell, RotateCcw, Calendar } from 'lucide-react';
-import { useApp } from '../context/AppContext';
+import { Search, Bell, Calendar } from 'lucide-react';
 
 export default function Header({ searchTerm, setSearchTerm, activeTab }) {
-  const { resetData } = useApp();
   const [showNotifications, setShowNotifications] = useState(false);
 
   const d = new Date();
@@ -33,20 +31,6 @@ export default function Header({ searchTerm, setSearchTerm, activeTab }) {
           <Calendar className="w-3.5 h-3.5 text-emerald-600" />
           <span>{currentDateStr}</span>
         </div>
-
-        {/* Reset Demo Data Button */}
-        <button
-          onClick={() => {
-            if (window.confirm("Reset all data to default demo state?")) {
-              resetData();
-            }
-          }}
-          title="Reset Demo Data"
-          className="p-2 bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-emerald-700 rounded-xl border border-slate-200 transition-all text-xs flex items-center gap-1.5 font-semibold"
-        >
-          <RotateCcw className="w-4 h-4" />
-          <span className="hidden md:inline font-bold">Reset Demo</span>
-        </button>
 
         {/* Notifications Bell */}
         <div className="relative">

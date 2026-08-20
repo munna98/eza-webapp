@@ -16,7 +16,7 @@ export default function Sidebar({ activeTab, setActiveTab, onOpenNewQuote }) {
   const navItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'quotations', label: 'Quotations', icon: FileText },
-    { id: 'invoices', label: 'GST Tax Invoices', icon: Receipt },
+    { id: 'invoices', label: 'Tax Invoices', icon: Receipt },
     { id: 'ledger', label: 'Payables & Receivables', icon: Wallet },
     { id: 'directory', label: 'Parties', icon: Users },
     { id: 'reports', label: 'Financial Reports', icon: BarChart3 }
@@ -81,12 +81,9 @@ export default function Sidebar({ activeTab, setActiveTab, onOpenNewQuote }) {
 
       {/* Footer Info Card */}
       <div className="p-5 border-t border-slate-200">
-        <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 space-y-1">
-          <div className="flex items-center gap-2.5">
-            <Building2 className="w-4 h-4 text-emerald-600 shrink-0" />
-            <span className="text-xs font-bold text-slate-800 truncate">Eza Spaces Pvt Ltd</span>
-          </div>
-          <p className="text-[11px] text-slate-500 font-mono">GSTIN: 32EZA8899K1Z5</p>
+        <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 flex items-center gap-2.5">
+          <Building2 className="w-4 h-4 text-emerald-600 shrink-0" />
+          <span className="text-xs font-bold text-slate-800 truncate">Eza Spaces Pvt Ltd</span>
         </div>
       </div>
     </aside>

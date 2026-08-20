@@ -2,11 +2,7 @@ import React from 'react';
 import { 
   BarChart3, 
   Download, 
-  TrendingUp, 
-  PieChart, 
-  FileSpreadsheet, 
-  ShieldCheck, 
-  CheckCircle2 
+  ShieldCheck
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
@@ -31,7 +27,7 @@ export default function Reports() {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", `GSTR1_Tax_Report_${businessInfo.name.replace(/\s+/g, '_')}_2026.csv`);
+    link.setAttribute("download", `Tax_Report_${businessInfo.name.replace(/\s+/g, '_')}_2026.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -44,10 +40,10 @@ export default function Reports() {
         <div className="space-y-2">
           <h2 className="text-3xl font-extrabold text-slate-900 flex items-center gap-3">
             <BarChart3 className="w-8 h-8 text-emerald-600" />
-            Financial & GST Tax Reports
+            Financial Tax Reports
           </h2>
           <p className="text-sm text-slate-500 leading-relaxed font-medium">
-            GSTR-1 compliant tax summaries, financial cashflow audits, and CSV data exports
+            Tax summaries, financial cashflow audits, and CSV data exports
           </p>
         </div>
 
@@ -56,7 +52,7 @@ export default function Reports() {
           className="btn-primary py-3.5 px-6 text-sm shrink-0 font-bold"
         >
           <Download className="w-5 h-5" />
-          <span>Export GSTR-1 CSV Report</span>
+          <span>Export CSV Report</span>
         </button>
       </div>
 
@@ -78,19 +74,19 @@ export default function Reports() {
         </div>
 
         <div className="glass-panel p-7 border border-slate-200">
-          <p className="text-xs text-slate-500 uppercase font-bold tracking-wider">Total GST Liability</p>
+          <p className="text-xs text-slate-500 uppercase font-bold tracking-wider">Total Tax Liability</p>
           <p className="text-3xl font-extrabold text-teal-700 font-mono mt-2">₹{totalGSTCollected.toLocaleString()}</p>
         </div>
       </div>
 
-      {/* GSTR-1 Tax Summary Table */}
+      {/* Tax Summary Table */}
       <div className="glass-panel rounded-3xl border border-slate-200 overflow-hidden">
         <div className="p-5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
           <h3 className="font-extrabold text-base text-slate-900 flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-emerald-600" />
-            GSTR-1 Outward Supplies Summary Table
+            Outward Supplies Tax Summary Table
           </h3>
-          <span className="text-xs text-slate-500 font-mono font-bold">Biller GSTIN: {businessInfo.gstin}</span>
+          <span className="text-xs text-slate-500 font-mono font-bold">Biller Tax ID: {businessInfo.gstin}</span>
         </div>
 
         <div className="overflow-x-auto">
@@ -99,7 +95,7 @@ export default function Reports() {
               <tr>
                 <th className="px-7 py-5">Invoice #</th>
                 <th className="px-7 py-5">Client Name</th>
-                <th className="px-7 py-5">Client GSTIN</th>
+                <th className="px-7 py-5">Tax ID / GSTIN</th>
                 <th className="px-7 py-5 text-right">Taxable Value</th>
                 <th className="px-7 py-5 text-right">CGST (9%)</th>
                 <th className="px-7 py-5 text-right">SGST (9%)</th>

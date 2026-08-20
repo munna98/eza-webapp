@@ -207,7 +207,7 @@ export default function CreateQuotation({ editingQuote, onBack, onQuoteCreated }
     }
 
     const payload = {
-      title: "BUDGETARY QUOTATION",
+      title: "QUOTATION",
       clientName,
       clientGSTIN,
       placeOfSupply,
@@ -264,7 +264,7 @@ export default function CreateQuotation({ editingQuote, onBack, onQuoteCreated }
               {editingQuote ? `Edit Quotation (${editingQuote.quoteNumber})` : 'Create Quotation'}
             </h2>
             <p className="text-xs text-slate-500 font-medium mt-0.5">
-              {editingQuote ? 'Modify line items, quantities, rates, and terms' : 'Create and manage professional budgetary quotations'}
+              {editingQuote ? 'Modify line items, quantities, rates, and terms' : 'Create and manage professional quotations'}
             </p>
           </div>
         </div>

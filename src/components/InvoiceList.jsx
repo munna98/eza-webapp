@@ -27,7 +27,7 @@ export default function InvoiceList({ searchTerm, onSelectInvoiceForPDF, onSelec
         <div className="space-y-1.5">
           <h2 className="text-2xl font-extrabold text-slate-900 flex items-center gap-3">
             <Receipt className="w-7 h-7 text-emerald-600" />
-            GST Tax Invoices Directory
+            Tax Invoices
           </h2>
           <p className="text-xs md:text-sm text-slate-500 font-medium">
             Manage tax compliant invoices, record payments, and export PDF copies

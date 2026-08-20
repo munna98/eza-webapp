@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import confetti from 'canvas-confetti';
 
 const AppContext = createContext();
 
@@ -315,16 +314,6 @@ export function AppProvider({ children }) {
 
     setInvoices([newInvoice, ...invoices]);
     setQuotations(quotations.map(q => q.id === quoteId ? { ...q, status: 'Converted' } : q));
-
-    try {
-      confetti({
-        particleCount: 80,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
-    } catch (e) {
-      console.log('Confetti triggered');
-    }
 
     return newInvoice;
   };
