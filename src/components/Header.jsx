@@ -67,10 +67,8 @@ export default function Header({ searchTerm, setSearchTerm, activeTab }) {
 
         {/* User Badge */}
         <div className="flex items-center gap-2.5 pl-3 border-l border-slate-200">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 p-0.5 shadow-sm">
-            <div className="w-full h-full bg-white rounded-full flex items-center justify-center font-bold text-xs text-emerald-700">
-              EZ
-            </div>
+          <div className="w-9 h-9 rounded-full overflow-hidden border border-slate-300 shadow-xs bg-slate-950">
+            <img src="/eza-logo.jpg" alt="Eza Admin" className="w-full h-full object-cover" />
           </div>
           <div className="hidden lg:block text-left">
             <p className="text-xs font-bold text-slate-900 leading-tight">Eza Admin</p>

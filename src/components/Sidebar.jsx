@@ -26,10 +26,14 @@ export default function Sidebar({ activeTab, setActiveTab, onOpenNewQuote }) {
     <aside className="w-72 bg-white border-r border-slate-200 flex flex-col justify-between h-screen sticky top-0 z-30 shrink-0 shadow-sm no-print">
       {/* Brand Header */}
       <div>
-        <div className="p-7 border-b border-slate-200/80">
+        <div className="p-6 border-b border-slate-200/80">
           <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center shadow-lg shadow-emerald-500/25 font-extrabold text-white text-2xl">
-              E
+            <div className="w-12 h-12 rounded-2xl overflow-hidden border border-slate-200 shadow-md shrink-0 bg-slate-950">
+              <img 
+                src="/eza-logo.jpg" 
+                alt="Eza Spaces Logo" 
+                className="w-full h-full object-cover" 
+              />
             </div>
             <div>
               <h1 className="font-extrabold text-xl text-slate-900 tracking-tight leading-tight">
