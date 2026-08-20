@@ -162,7 +162,7 @@ export default function Reports() {
             Financial Tax Reports
           </h2>
           <p className="text-sm text-slate-500 leading-relaxed font-medium">
-            Itemized outward supplies tax summaries, HSN/SAC breakdowns, and custom date range CSV exports
+            View and export financial tax reports and itemized summaries
           </p>
         </div>
 

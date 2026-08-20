@@ -1,14 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Search, Bell, Calendar } from 'lucide-react';
 
 export default function Header({ searchTerm, setSearchTerm, activeTab }) {
   const [showNotifications, setShowNotifications] = useState(false);
+  const notificationRef = useRef(null);
 
   const d = new Date();
   const day = String(d.getDate()).padStart(2, '0');
   const month = String(d.getMonth() + 1).padStart(2, '0');
   const year = d.getFullYear();
   const currentDateStr = `${day}-${month}-${year}`;
+
+  // Close notification popup when clicking outside (on blur)
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (notificationRef.current && !notificationRef.current.contains(event.target)) {
+        setShowNotifications(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between sticky top-0 z-20 shadow-xs no-print">
@@ -33,7 +47,7 @@ export default function Header({ searchTerm, setSearchTerm, activeTab }) {
         </div>
 
         {/* Notifications Bell */}
-        <div className="relative">
+        <div className="relative" ref={notificationRef}>
           <button
             onClick={() => setShowNotifications(!showNotifications)}
             className="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl border border-slate-200 relative transition-all"
@@ -47,14 +61,9 @@ export default function Header({ searchTerm, setSearchTerm, activeTab }) {
             <div className="absolute right-0 mt-3 w-80 glass-panel rounded-2xl p-4 shadow-xl z-50 border border-slate-200 animate-fade-in">
               <div className="flex items-center justify-between border-b border-slate-200 pb-2.5 mb-3">
                 <h4 className="font-bold text-sm text-slate-900">System Notifications</h4>
-                <span className="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded border border-emerald-300 font-mono font-bold">2 New</span>
+                <span className="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded border border-emerald-300 font-mono font-bold">1 New</span>
               </div>
               <div className="space-y-2 text-xs">
-                <div className="p-2.5 bg-slate-50 rounded-xl border border-emerald-200">
-                  <p className="font-bold text-emerald-800">Quote Approved 🎉</p>
-                  <p className="text-slate-700 mt-0.5">Kochi Horizon approved proposal EZA-QT-2026-03.</p>
-                  <span className="text-[10px] text-slate-400 mt-1 block">2 hours ago</span>
-                </div>
                 <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200">
                   <p className="font-bold text-amber-800">Payment Due Reminder</p>
                   <p className="text-slate-700 mt-0.5">INV-2026-0802 due in 3 days (Urban Nest).</p>
