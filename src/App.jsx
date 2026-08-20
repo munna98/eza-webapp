@@ -21,6 +21,23 @@ function MainApp() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [searchTerm, setSearchTerm] = useState('');
   const [editingQuote, setEditingQuote] = useState(null);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() => {
+    try {
+      return localStorage.getItem('eza_sidebar_collapsed') === 'true';
+    } catch {
+      return false;
+    }
+  });
+
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed(prev => {
+      const next = !prev;
+      try {
+        localStorage.setItem('eza_sidebar_collapsed', String(next));
+      } catch {}
+      return next;
+    });
+  };
   
   // Root Modal states
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -54,6 +71,8 @@ function MainApp() {
           setActiveTab(tab);
         }} 
         onOpenNewQuote={handleOpenNewQuote}
+        isCollapsed={isSidebarCollapsed}
+        onToggleCollapse={toggleSidebar}
       />
 
       {/* Main Content Viewport */}
@@ -62,6 +81,8 @@ function MainApp() {
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
           activeTab={activeTab}
+          isSidebarCollapsed={isSidebarCollapsed}
+          onToggleSidebar={toggleSidebar}
         />
 
         <main className="p-6 md:p-8 max-w-[1450px] mx-auto w-full flex-1 space-y-6">

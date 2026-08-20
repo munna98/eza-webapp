@@ -1,7 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Search, Bell, Calendar } from 'lucide-react';
+import { Search, Bell, Calendar, Menu } from 'lucide-react';
 
-export default function Header({ searchTerm, setSearchTerm, activeTab }) {
+export default function Header({ 
+  searchTerm, 
+  setSearchTerm, 
+  activeTab,
+  isSidebarCollapsed,
+  onToggleSidebar 
+}) {
   const [showNotifications, setShowNotifications] = useState(false);
   const notificationRef = useRef(null);
 
@@ -25,17 +31,27 @@ export default function Header({ searchTerm, setSearchTerm, activeTab }) {
   }, []);
 
   return (
-    <header className="bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between sticky top-0 z-20 shadow-xs no-print">
-      {/* Search Input Bar */}
-      <div className="relative w-72 md:w-96">
-        <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-        <input
-          type="text"
-          placeholder="Search invoices, quotes, parties, GSTIN..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
-        />
+    <header className="bg-white border-b border-slate-200 px-6 md:px-8 py-4 flex items-center justify-between sticky top-0 z-20 shadow-xs no-print">
+      {/* Left Area: Toggle & Search Bar */}
+      <div className="flex items-center gap-3.5">
+        <button
+          onClick={onToggleSidebar}
+          title={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+          className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-xl border border-slate-200 transition-colors shrink-0"
+        >
+          <Menu className="w-5 h-5" />
+        </button>
+
+        <div className="relative w-64 md:w-80 lg:w-96">
+          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <input
+            type="text"
+            placeholder="Search invoices, quotes, parties, GSTIN..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-300 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
+          />
+        </div>
       </div>
 
       {/* Right Controls */}
